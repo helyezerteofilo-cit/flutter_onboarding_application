@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                 padding: const EdgeInsets.only(top: 40),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(200)),
-                //child: Image.asset('assets/imagess/github-logo.png'),
+                child: Image.asset('assets/images/github-logo.png'),
               ),
               Padding(
                 padding: const EdgeInsets.all(40),
