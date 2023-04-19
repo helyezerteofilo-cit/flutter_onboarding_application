@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     
     final HttpLink httpLink = HttpLink('https://api.github.com/graphql');
     final AuthLink authLink = AuthLink(
-      getToken: () async => 'Bearer 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'
+      getToken: () async => 'Bearer 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'
       );
     final Link link = authLink.concat(httpLink);
     ValueNotifier<GraphQLClient> client = ValueNotifier(
