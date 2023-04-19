@@ -81,10 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   await addUsernameToSF(usernameController.text);
                   username = await getUsernameValueSF();
                   if (username!= ''){
-                    Navigator.push(
-                    context, 
-                    MaterialPageRoute(builder: (context)=> UserInfo(username: username))
-                    );
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserInfo(username: username)));
                   }
                 },
                  
