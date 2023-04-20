@@ -34,7 +34,6 @@ class UserDetailsRepositoryImp implements UserDetailsRepository{
         user(login: \$username){
           name
           bio
-          email
           avatarUrl
           repositories(last: 10){
             nodes {
