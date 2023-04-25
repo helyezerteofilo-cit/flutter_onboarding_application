@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/userDetailsPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'user_info.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -81,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                   await addUsernameToSF(usernameController.text);
                   username = await getUsernameValueSF();
                   if (username!= ''){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserInfo(username: username)));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserDetailsPage(username: username)));
                   }
                 },
                  

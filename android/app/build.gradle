@@ -51,6 +51,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        missingDimensionStrategy 'flutter.io/url_launcher', 'io.flutter.plugins.urllauncher.BuildConfig'
     }
 
     buildTypes {

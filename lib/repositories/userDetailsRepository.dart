@@ -12,7 +12,7 @@ abstract class UserDetailsRepository{
 class UserDetailsRepositoryImp implements UserDetailsRepository{
 
   final String _baseUrl = 'https://api.github.com/graphql';
-  final String _personalToken = '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';
+  final String _personalToken = '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';
   
   @override
   Future<User> getUserDataByUsername(String username)  async{
@@ -29,7 +29,7 @@ class UserDetailsRepositoryImp implements UserDetailsRepository{
       )
     );
 
-    const String query = r'''
+    const String query = '''
       query GetUser(\$username: String!){
         user(login: \$username){
           name
@@ -38,7 +38,6 @@ class UserDetailsRepositoryImp implements UserDetailsRepository{
           repositories(last: 10){
             nodes {
               name
-              description
               url
             }
           }
@@ -57,6 +56,11 @@ class UserDetailsRepositoryImp implements UserDetailsRepository{
     }
 
     final Map<String, dynamic> userData = result.data!['user'];
+    print(userData['name']);
+    print(userData['bio']);
+    print(userData['avatarUrl']);
+    print(userData['repositories']['nodes']);
+    
 
     return User.fromGraphQL(userData);
 
