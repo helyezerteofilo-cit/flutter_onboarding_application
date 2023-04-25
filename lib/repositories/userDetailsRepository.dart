@@ -12,7 +12,7 @@ abstract class UserDetailsRepository{
 class UserDetailsRepositoryImp implements UserDetailsRepository{
 
   final String _baseUrl = 'https://api.github.com/graphql';
-  final String _personalToken = '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';
+  final String _personalToken = 'YOUR GITHUB TOKEN HERE';
   
   @override
   Future<User> getUserDataByUsername(String username)  async{

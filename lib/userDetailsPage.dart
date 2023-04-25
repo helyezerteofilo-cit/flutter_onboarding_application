@@ -55,59 +55,61 @@ class _UserDetailsPageState extends State<UserDetailsPage> {
               }
               else if(state is UserStateLoaded){
                 final user = state.data;
-                return Container(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 120,
-                        height: 120,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(user.avatarUrl),
-                          radius: 50,
-                        ),
-                      ),
-                      const SizedBox(height: 10,),
-                      Text(
-                        user.name,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      const SizedBox(height: 10,),
-                      Text(
-                        user.bio,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      ),
-                      const SizedBox(height: 30,),
-                      Text("Last ${user.repositories.length} repositories:",
-                        style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 10,),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 400,
-                        child: ListView.builder(
-                          itemCount: user.repositories.length,
-                          itemBuilder: (BuildContext context, index) {
-                            final name = user.repositories[index].name;
-                            final url = user.repositories[index].url;
-
-                            return Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                              child: GestureDetector(
-                                child: ListTile(
-                                  title: Text(name),
-                                  onTap: (){
-                                    launchUrlString(url);
-                                  },
-                                ),
-                              ),
-                            );
-                          })
+                return SingleChildScrollView(
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 120,
+                          height: 120,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(user.avatarUrl),
+                            radius: 50,
                           ),
-                    ]),
+                        ),
+                        const SizedBox(height: 10,),
+                        Text(
+                          user.name,
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                        const SizedBox(height: 10,),
+                        Text(
+                          user.bio,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(height: 30,),
+                        Text("Last ${user.repositories.length} repositories:",
+                          style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(height: 10,),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: 400,
+                          child: ListView.builder(
+                            itemCount: user.repositories.length,
+                            itemBuilder: (BuildContext context, index) {
+                              final name = user.repositories[index].name;
+                              final url = user.repositories[index].url;
+                
+                              return Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                child: GestureDetector(
+                                  child: ListTile(
+                                    title: Text(name),
+                                    onTap: (){
+                                      launchUrlString(url);
+                                    },
+                                  ),
+                                ),
+                              );
+                            })
+                            ),
+                      ]),
+                  ),
                 );
               }
               else{
