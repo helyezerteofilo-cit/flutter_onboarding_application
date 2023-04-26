@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/bloc/userDetailsBloc.dart';
-import 'package:flutter_application_2/repositories/userDetailsRepository.dart';
+import 'package:flutter_application_2/bloc/user_details_bloc.dart';
+import 'package:flutter_application_2/repositories/user_details_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+
 
 
 class UserDetailsPage extends StatefulWidget {

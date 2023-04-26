@@ -1,5 +1,5 @@
-import 'package:flutter_application_2/repositories/userDetailsRepository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_application_2/repositories/user_details_repository.dart';
 
 import '../models/user.dart';
 

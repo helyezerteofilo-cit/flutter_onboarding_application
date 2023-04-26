@@ -12,7 +12,7 @@ abstract class UserDetailsRepository{
 class UserDetailsRepositoryImp implements UserDetailsRepository{
 
   final String _baseUrl = 'https://api.github.com/graphql';
-  final String _personalToken = 'YOUR GITHUB TOKEN HERE';
+  final String _personalToken = 'YOUR-GIT-HUB-TOKEN-HERE';
   
   @override
   Future<User> getUserDataByUsername(String username)  async{
@@ -56,11 +56,6 @@ class UserDetailsRepositoryImp implements UserDetailsRepository{
     }
 
     final Map<String, dynamic> userData = result.data!['user'];
-    print(userData['name']);
-    print(userData['bio']);
-    print(userData['avatarUrl']);
-    print(userData['repositories']['nodes']);
-    
 
     return User.fromGraphQL(userData);
 
