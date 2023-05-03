@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/repositories/user_details_repository.dart';
 import 'package:flutter_application_2/user_details_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_application_2/sharedPreferences/username.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -19,18 +20,6 @@ class _LoginPageState extends State<LoginPage> {
     usernameController.dispose();
     super.dispose();
   }
-  
-  Future<void> addUsernameToSF(String user) async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('user',user);
-  }
-
-  Future<String> getUsernameValueSF() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String user = prefs.getString('user')?? '';
-    return user;
-  }
-  
   
   @override
   Widget build(BuildContext context) {
@@ -77,10 +66,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 child: const Text("Access Info",style: TextStyle(color: Colors.white),),
                 onPressed: () async{
-                  await addUsernameToSF(usernameController.text);
-                  username = await getUsernameValueSF();
+                  await UserNameSharedPreferences().addUsernameToSF(usernameController.text);
+                  username = await UserNameSharedPreferences().getUsernameValueSF();
                   if (username!= ''){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserDetailsPage(username: username.trim())));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UserDetailsPageStV(username: username.trim(),repositoryImp: UserDetailsRepositoryImp(),)));
                   }
                 },
                  

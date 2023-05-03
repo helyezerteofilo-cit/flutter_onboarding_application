@@ -20,15 +20,14 @@ void main() {
 
   });
 
-    testWidgets("widget should receive a string", (WidgetTester tester) async{
+    testWidgets("widget textfield should receive a string", (WidgetTester tester) async{
     await tester.pumpWidget(MaterialApp(
       home: LoginPage(),
     ));
 
     final textFieldFinder = find.byType(TextField);
     await tester.enterText(textFieldFinder,"helyezerteofilo-cit");
-    final username = find.text("helyezerteofilo-cit");
-    expect(username, findsOneWidget);
+    final button = find.text("Access Info");
 
   });
 

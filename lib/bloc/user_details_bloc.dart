@@ -38,22 +38,20 @@ class UserDetailsBloc extends Bloc<UserEvent, UserState>{
 
   final UserDetailsRepositoryImp repositoryImp;
 
-  UserDetailsBloc({required this.repositoryImp}) : super(const UserStateInitial()){
+  UserDetailsBloc(this.repositoryImp) : super(const UserStateInitial()){
     on<GetDataEvent>(_onGetDataEvent);
       
     }
 
     void _onGetDataEvent(GetDataEvent event, Emitter<UserState> emit) async{
-      emit(UserStateLoading());
+      emit(const UserStateLoading());
       final username = event.username;
       try{
         final result = await repositoryImp.getUserDataByUsername(username);
         emit(UserStateLoaded(result));
       } catch(error){
-          emit(UserStateError(error.toString()));
+        emit(UserStateError(error.toString()));
       }
     }
-
-
 }
 
