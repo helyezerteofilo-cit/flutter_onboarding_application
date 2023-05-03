@@ -31,7 +31,8 @@ void main() {
   testWidgets("User details screen displays user's name", (WidgetTester tester) async{
 
     when(()=> repositoryImp.getUserDataByUsername(any())).thenAnswer((_) async => mockUser);
-
+    await mockNetworkImagesFor(() => tester.pumpWidget(Image.network('')));
+    
     await tester.pumpWidget(
         MaterialApp(
           home: UserDetailsPageStV(
@@ -46,6 +47,7 @@ void main() {
   });
 
   testWidgets("User details screen displays user's bio", (WidgetTester tester) async{
+    await mockNetworkImagesFor(() => tester.pumpWidget(Image.network('')));
     
     when(()=> repositoryImp.getUserDataByUsername(any())).thenAnswer((_) async => mockUser);
 
@@ -63,6 +65,7 @@ void main() {
   });
 
   testWidgets("User details screen displays user's repositories", (WidgetTester tester) async{
+    await mockNetworkImagesFor(() => tester.pumpWidget(Image.network('')));
     
     when(()=> repositoryImp.getUserDataByUsername(any())).thenAnswer((_) async => mockUser);
 
@@ -79,6 +82,24 @@ void main() {
     expect(find.text("repo1"),findsOneWidget);
     expect(find.text("repo2"),findsOneWidget);
     expect(find.text("repo3"),findsOneWidget);
+  });
+
+  testWidgets("User details screen displays user's avatar", (WidgetTester tester) async{
+    await mockNetworkImagesFor(() => tester.pumpWidget(Image.network('')));
+    
+    when(()=> repositoryImp.getUserDataByUsername(any())).thenAnswer((_) async => mockUser);
+
+    await tester.pumpWidget(
+        MaterialApp(
+          home: UserDetailsPageStV(
+            username: "helyezerteofilo-cit", 
+            repositoryImp: repositoryImp
+            ),
+        ),
+    );
+    await tester.pump();
+    
+    expect(find.byType(CircleAvatar), findsOneWidget);
   });
 
 
