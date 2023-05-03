@@ -36,7 +36,7 @@ class UserStateError extends UserState {
 
 class UserDetailsBloc extends Bloc<UserEvent, UserState>{
 
-  final UserDetailsRepositoryImp repositoryImp;
+  final UserDetailsRepository repositoryImp;
 
   UserDetailsBloc(this.repositoryImp) : super(const UserStateInitial()){
     on<GetDataEvent>(_onGetDataEvent);

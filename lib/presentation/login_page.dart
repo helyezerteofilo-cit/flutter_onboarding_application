@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/repositories/user_details_repository.dart';
-import 'package:flutter_application_2/user_details_page.dart';
+import 'package:flutter_application_2/presentation/user_details_page.dart';
 import 'package:flutter_application_2/sharedPreferences/username.dart';
 
 class LoginPage extends StatefulWidget {
